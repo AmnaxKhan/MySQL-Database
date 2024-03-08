@@ -56,14 +56,20 @@ GROUP BY MenuItem.restaurantNo;
     #Include the number of orders, the average base price of each order (without tax), 
     #the total base price of all orders (without tax), and total price (with tax) in the result. 
     #Note: There should be only 1 tuple in the result.
-    
-SELECT COUNT(FoodOrder.orderNo) AS numberOfOrders, AVG(MenuItem.price) AS averageBasePrice, SUM(MenuItem.price) AS totalBasePrice, (SUM(MenuItem.price*1.1) AS totalPrice
+
+SELECT COUNT(FoodOrder.orderNo) AS numberOfOrders, AVG(MenuItem.price) AS averageBasePrice, SUM(MenuItem.price) AS totalBasePrice, SUM(MenuItem.price*1.1) AS totalPrice
 FROM FoodOrder
 JOIN MenuItem ON FoodOrder.ItemNo = MenuItem.ItemNo
 JOIN Restaurant ON MenuItem.restaurantNo = Restaurant.restaurantID
 WHERE Restaurant.restaurantName = 'Eureka Pizza';
 
-#10)Find and print the total price of all orders placed in March, assuming a 10% tax rate. Include the number of orders, the average base price of each order (without tax), the total base price of all orders (without tax), and total price (with tax) in the result. Note: There should be only 1 tuple in the result.
-
+#10)Find and print the total price of all orders placed in March, assuming a 10% tax rate. 
+    #Include the number of orders, the average base price of each order (without tax), 
+    #the total base price of all orders (without tax), and total price (with tax) in the result. 
+    #Note: There should be only 1 tuple in the result.
+SELECT COUNT(FoodOrder.orderNo) AS numberOfOrders, AVG(MenuItem.price) AS averageBasePrice, SUM(MenuItem.price) AS totalBasePrice, SUM(MenuItem.price*1.1) AS totalPrice
+FROM FoodOrder
+JOIN MenuItem ON FoodOrder.ItemNo = MenuItem.ItemNo
+WHERE FoodOrder.date >= '2024-04-01' AND FoodOrder.date <= '2024-04-01';
 
 EOFMYSQL
