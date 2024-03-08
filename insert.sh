@@ -30,14 +30,14 @@ INSERT INTO MenuItem VALUES (9, 5, 13, 6.00);
 INSERT INTO MenuItem VALUES (10, 5, 15, 15.00); 
 INSERT INTO MenuItem VALUES (11, 5, 22, 14.00); 
 
-INSERT INTO FoodOrder VALUES (0, 2, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '10:30')
-INSERT INTO FoodOrder VALUES (1, 0, STR_TO_DATE('2024-03-02', '%Y-%m-%d'), '15:33')
-INSERT INTO FoodOrder VALUES (2, 3, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '15:35')
-INSERT INTO FoodOrder VALUES (3, 5, STR_TO_DATE('2024-03-03', '%Y-%m-%d'), '21:00')
-INSERT INTO FoodOrder VALUES (4, 7, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '18:11')
-INSERT INTO FoodOrder VALUES (5, 7, STR_TO_DATE('2024-03-04', '%Y-%m-%d'), '18:51')
-INSERT INTO FoodOrder VALUES (6, 9, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '19:00')
-INSERT INTO FoodOrder VALUES (7, 11, STR_TO_DATE('2024-03-05', '%Y-%m-%d'), '17:15')
-INSERT INTO FoodOrder VALUES (8, 11, STR_TO_DATE('2024-04-01', '%Y-%m-%d'), '12:10')
+INSERT INTO FoodOrder VALUES (0, 2, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '10:30');
+INSERT INTO FoodOrder VALUES (1, 0, STR_TO_DATE('2024-03-02', '%Y-%m-%d'), '15:33');
+INSERT INTO FoodOrder VALUES (2, 3, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '15:35');
+INSERT INTO FoodOrder VALUES (3, 5, STR_TO_DATE('2024-03-03', '%Y-%m-%d'), '21:00');
+INSERT INTO FoodOrder VALUES (4, 7, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '18:11');
+INSERT INTO FoodOrder VALUES (5, 7, STR_TO_DATE('2024-03-04', '%Y-%m-%d'), '18:51');
+INSERT INTO FoodOrder VALUES (6, 9, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '19:00');
+INSERT INTO FoodOrder VALUES (7, 11, STR_TO_DATE('2024-03-05', '%Y-%m-%d'), '17:15');
+INSERT INTO FoodOrder VALUES (8, 11, STR_TO_DATE('2024-04-01', '%Y-%m-%d'), '12:10');
 
 EOFMYSQL

@@ -9,6 +9,14 @@ CREATE TABLE Restaurant (
     city CHAR(15) NOT NULL
 );
 
+#different version for changing the default values (shown in line 15)
+CREATE TABLE Restaurant (
+    restaurantID INT PRIMARY KEY,
+    restaurantName CHAR(15) NOT NULL DEFAULT 'NOT NULL',
+    type CHAR(15) NOT NULL DEFAULT 'NOT NULL',
+    city CHAR(15) NOT NULL DEFAULT 'NOT NULL'
+);
+
 CREATE TABLE Dish (
     dishNo INT PRIMARY KEY,
     dishName CHAR(25) NOT NULL,
@@ -21,8 +29,8 @@ CREATE TABLE MenuItem (
     dishNo INT,
     price DECIMAL(4,2),
     FOREIGN KEY (restaurantNo) REFERENCES Restaurant(restaurantID),
-    FOREIGN KEY (dishNo) REFERENCES Dish(dishNo)
-    CHECK (price >= '5' AND price <= '50')
+    FOREIGN KEY (dishNo) REFERENCES Dish(dishNo),
+    CHECK (price>= 5 AND price<= 50)
 );
 
 CREATE TABLE FoodOrder (
