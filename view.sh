@@ -36,7 +36,7 @@ JOIN Dish ON MenuItem.dishNo = Dish.dishNo
 WHERE Dish.dishName = 'Salad';
 
 #7)Find all menu items served by Asian restaurants, sorted by price. Output the dish name, restaurant name, and price.
-SELECT dishName, restaurantName, price
+SELECT dishName, restaurantName, city, price
 FROM Restaurant
 JOIN MenuItem ON Restaurant.restaurantID = MenuItem.restaurantNo
 JOIN Dish ON MenuItem.dishNo = Dish.dishNo
@@ -44,10 +44,8 @@ WHERE Restaurant.type = 'Asian'
 ORDER BY price; 
 
 #8)Find and print the total number of menu items and the average price of the menu items for each restaurant.
-CREATE VIEW RestaurantItemsAndAvgPrice(restaurantName, menuItemsNo, averagePrice)
-AS SELECT 
------
-SELECT Restaurant.restaurantName, MenuItem.restaurantNo, COUNT(MenuItem.itemNo) AS totalMenuItems, AVG(MenuItem.price) AS averagePrice
+
+SELECT Restaurant.restaurantName, Restaurant.city, COUNT(MenuItem.itemNo) AS totalMenuItems, ROUND(AVG(MenuItem.price), 2) AS averagePrice
 FROM Restaurant
 JOIN MenuItem ON Restaurant.restaurantID = MenuItem.restaurantNo
 GROUP BY MenuItem.restaurantNo;
@@ -71,12 +69,7 @@ WHERE Restaurant.restaurantName = 'Eureka Pizza';
 #10)Find and print the total price of all orders placed in March, assuming a 10% tax rate. 
     #Include the number of orders, the average base price of each order (without tax), 
     #the total base price of all orders (without tax), and total price (with tax) in the result. 
-    #Note: There should be only 1 tuple in the result.
-SELECT COUNT(FoodOrder.orderNo) AS numberOfOrders, AVG(MenuItem.price) AS averageBasePrice, SUM(MenuItem.price) AS totalBasePrice, SUM(MenuItem.price*1.1) AS totalPrice
-FROM FoodOrder
-JOIN MenuItem ON FoodOrder.ItemNo = MenuItem.ItemNo
-WHERE FoodOrder.date >= '2024-04-01' AND FoodOrder.date <= '2024-04-01';
-
+    #Note: There should be only 1 tuple in the result
 
 SELECT 
     COUNT(FoodOrder.orderNo) AS numberOfOrders, 
@@ -85,6 +78,6 @@ SELECT
     ROUND(SUM(MenuItem.price*1.1), 2) AS totalPrice
 FROM FoodOrder
 JOIN MenuItem ON FoodOrder.ItemNo = MenuItem.ItemNo
-WHERE FoodOrder.date >= '2024-04-01' AND FoodOrder.date <= '2024-04-30';
+WHERE FoodOrder.date >= '2024-03-01' AND FoodOrder.date <= '2024-03-31';
 
 EOFMYSQL
