@@ -1,6 +1,49 @@
-#!/bin/bash
 mysql <<EOFMYSQL
 use amnak;
+show tables;
+
+DROP TABLE FoodOrder; 
+DROP TABLE MenuItem; 
+DROP TABLE Dish; 
+DROP TABLE Restaurant; 
+
+CREATE TABLE Restaurant (
+    restaurantID INT,
+    restaurantName CHAR(15) NOT NULL,
+    type CHAR(15) NOT NULL,
+    city CHAR(15) NOT NULL, 
+    PRIMARY KEY (restaurantID)
+);
+
+CREATE TABLE Dish (
+    dishNo INT,
+    dishName CHAR(25) NOT NULL,
+    PRIMARY KEY (dishNo),
+    type ENUM('ap', 'en', 'ds') NOT NULL
+);
+
+
+
+CREATE TABLE MenuItem (
+    itemNo INT,
+    restaurantNo INT,
+    dishNo INT,
+    price DECIMAL(4,2),
+    CHECK (price >= 5 AND price <= 50),
+    PRIMARY KEY (itemNo),
+    FOREIGN KEY (restaurantNo) REFERENCES Restaurant(restaurantID) ON DELETE RESTRICT,
+    FOREIGN KEY (dishNo) REFERENCES Dish(dishNo) ON DELETE SET NULL
+);
+
+CREATE TABLE FoodOrder (
+    orderNo INT,
+    itemNo INT,
+    date DATE CHECK (date >= '2024-01-01'),
+    time TIME,
+    PRIMARY KEY (orderNo),
+    FOREIGN KEY (itemNo) REFERENCES MenuItem(itemNo) ON DELETE CASCADE
+);
+
 
 INSERT INTO Restaurant VALUES (0, 'Tasty Thai', 'Asian', 'Dallas'); 
 INSERT INTO Restaurant VALUES (3, 'Eureka Pizza', 'Pizza', 'Fayetteville'); 
@@ -40,7 +83,6 @@ INSERT INTO FoodOrder VALUES (6, 9, STR_TO_DATE('2024-03-01', '%Y-%m-%d'), '19:0
 INSERT INTO FoodOrder VALUES (7, 11, STR_TO_DATE('2024-03-05', '%Y-%m-%d'), '17:15');
 INSERT INTO FoodOrder VALUES (8, 11, STR_TO_DATE('2024-04-01', '%Y-%m-%d'), '12:10');
 
-SHOW TABLES;
 
 
 EOFMYSQL
